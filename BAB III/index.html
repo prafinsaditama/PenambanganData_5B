@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Resume Penambangan Data Prafinda</title>
-        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Tugas III - Resume Penambangan Data Prafinda</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,13 +19,13 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -39,24 +39,24 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href=".">Resume Penambangan Data Prafinda</a>
+                    <a class="navbar-brand" href="..">Resume Penambangan Data Prafinda</a>
                 </div>
 
                 <!-- Expanded navigation -->
                 <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Welcome to MkDocs</a>
+                            </li>
+                            <li >
+                                <a href="../BAB I/">Tugas I</a>
+                            </li>
+                            <li >
+                                <a href="../BAB II/">Tugas II</a>
+                            </li>
                             <li class="active">
-                                <a href=".">Welcome to MkDocs</a>
-                            </li>
-                            <li >
-                                <a href="BAB I/">Tugas I</a>
-                            </li>
-                            <li >
-                                <a href="BAB II/">Tugas II</a>
-                            </li>
-                            <li >
-                                <a href="BAB III/">Tugas III</a>
+                                <a href="./">Tugas III</a>
                             </li>
                         </ul>
 
@@ -66,13 +66,13 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="disabled">
-                                <a rel="next" >
+                            <li >
+                                <a rel="next" href="../BAB II/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="BAB I/">
+                            <li class="disabled">
+                                <a rel="prev" >
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -84,21 +84,56 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
-            <li><a href="#commands">Commands</a></li>
+        <li class="main active"><a href="#tugas-iii">Tugas III</a></li>
+            <li><a href="#entropy-information-gain">Entropy &amp; Information Gain</a></li>
+            <li><a href="#contoh">Contoh</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="tugas-iii">Tugas III</h1>
+<h3 id="entropy-information-gain">Entropy &amp; Information Gain</h3>
+<p>Algoritma pada metode ini menggunakan konsep dari entropi. Konsep Entropi yang digunakan untuk mengukur “seberapa informatifnya” sebuah node (yang biasanya disebut seberapa baiknya).</p>
 <ul>
-<li>NAME           : Prafinda Sutan Aditama</li>
-<li>NIM            : 180411100070</li>
-<li>MATA KULIAH    : Penambangan Data_5B</li>
-<li>DOSEN PENGAMPU : <a href="https//:mulaab.github.io/datamining">MULAAB</a></li>
-</ul></div>
+<li>Entropi(S) = 0, jika semua contoh pada S berada dalam kelas yang sama.</li>
+<li>Entroiy(S) = 1, jika jumlah contoh positif dan jumlah contoh negatif dalam S adalah sama.</li>
+<li>0 &lt; Entropi(S) &lt; 1, jika jumlah contoh positif dan negatif dalam S tidak sama.</li>
+</ul>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/07/entropi.jpg" /></p>
+<p>Dimana:</p>
+<ul>
+<li>S adalah himpunan (dataset) kasus</li>
+<li>k adalah banyaknya partisi S</li>
+<li>pj adalah probabilitas yang di dapat dari Sum(Ya) dibagi Total Kasus.</li>
+</ul>
+<p>Setelah mendapat nilai entropi, pemilihan atribut dilakukan dengan nilai information gain terbesar.</p>
+<p>gain decision tree
+information gain</p>
+<p>Dimana:</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/07/gain-decision-tree.jpg" /></p>
+<ul>
+<li>S = ruang (data) sample yang digunakan untuk training.</li>
+<li>A = atribut.</li>
+<li>|Si| = jumlah sample untuk nilai V.</li>
+<li>|S| = jumlah seluruh sample data.</li>
+<li>Entropi(Si) = entropy untuk sample-sample yang memiliki nilai i</li>
+</ul>
+<h2 id="contoh">Contoh</h2>
+<p>Data yang telah ada pada Tabel dibawah akan digunakan untuk membentuk pohon keputusan dimana memiliku atribut-atribut seperti Cuaca, Suhu, Kelembaban, dan Berangin. Setiap atribut memiliki nilai. Sedangkan kelasnya ada pada kolom Main yaitu kelas “Tidak” dan kelas “Ya”. Kemudian data tersebut dianalisis; dataset tersebut memiliki 14 kasus yang terdiri 10 “Ya” dan 4 “Tidak” pada kolom Main.</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/07/Learning-Dataset-1.jpg" /></p>
+<p>Kemudian hitung entropi dengan rumus seperti diatas.</p>
+<blockquote>
+<p>Entropi (S) = (-(10/14) x log2 (10/14) + (-(4/10) x log2 (4/10)) = 0.863120569</p>
+</blockquote>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/07/Hasil-Perhitungan-pada-Dataset-1.jpg" />
+<center>hasil perhitungan entropi</center></p>
+<p>Setelah mendapatkan entropi dari keseluruhan kasus, lakukan analisis pada setiap atribut dan nilai-nilainya dan hitung entropinya.</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/07/Analisis-Atribut-Nilai-Banyaknya-Kejadian-Nilai-Entropi-dan-Gain-1.jpg" />
+analisis atribut, nilai, banyaknya kejadian, entropi dan gain</p>
+<p>Setelah mendapatkan nilai entropy, berikutnya hitung nilai information gain dari setiap variabel.</p>
+<blockquote>
+<p>Gain (Cuaca) = 0.863120569 –  ((4/10) x 0 + (5/14) x 0.721928095 + (5/14) x 0.970950594) = 0.258521037</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">
@@ -106,11 +141,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
@@ -178,8 +213,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-09-23 00:19:51
--->
