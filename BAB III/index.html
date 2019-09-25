@@ -87,6 +87,7 @@
         <li class="main active"><a href="#tugas-iii">Tugas III</a></li>
             <li><a href="#entropy-information-gain">Entropy &amp; Information Gain</a></li>
             <li><a href="#contoh">Contoh</a></li>
+            <li><a href="#implementasi">Implementasi</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -133,7 +134,292 @@ analisis atribut, nilai, banyaknya kejadian, entropi dan gain</p>
 <p>Setelah mendapatkan nilai entropy, berikutnya hitung nilai information gain dari setiap variabel.</p>
 <blockquote>
 <p>Gain (Cuaca) = 0.863120569 –  ((4/10) x 0 + (5/14) x 0.721928095 + (5/14) x 0.970950594) = 0.258521037</p>
-</blockquote></div>
+</blockquote>
+<h2 id="implementasi">Implementasi</h2>
+<pre><code class="python">from pandas import*
+from math import log
+from sklearn.feature_selection import mutual_info_classif
+
+df = read_csv(&quot;BAB III.csv&quot;, sep=';')
+df
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cuaca</th>
+      <th>Suhu</th>
+      <th>Kelembapan</th>
+      <th>Berangin</th>
+      <th>Main</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Cerah</td>
+      <td>Panas</td>
+      <td>Tinggi</td>
+      <td>Salah</td>
+      <td>Tidak</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Cerah</td>
+      <td>Panas</td>
+      <td>Tinggi</td>
+      <td>Benar</td>
+      <td>Tidak</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Berawan</td>
+      <td>Panas</td>
+      <td>Tinggi</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Hujan</td>
+      <td>Sejuk</td>
+      <td>Tinggi</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Hujan</td>
+      <td>Dingin</td>
+      <td>Normal</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Hujan</td>
+      <td>Dingin</td>
+      <td>Normal</td>
+      <td>Benar</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Berawan</td>
+      <td>Dingin</td>
+      <td>Normal</td>
+      <td>Benar</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Cerah</td>
+      <td>Sejuk</td>
+      <td>Tinggi</td>
+      <td>Salah</td>
+      <td>Tidak</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Cerah</td>
+      <td>Dingin</td>
+      <td>Normal</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Hujan</td>
+      <td>Sejuk</td>
+      <td>Normal</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Cerah</td>
+      <td>Sejuk</td>
+      <td>Normal</td>
+      <td>Benar</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Berawan</td>
+      <td>Sejuk</td>
+      <td>Tinggi</td>
+      <td>Benar</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Berawan</td>
+      <td>Panas</td>
+      <td>Normal</td>
+      <td>Salah</td>
+      <td>Ya</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Hujan</td>
+      <td>Sejuk</td>
+      <td>Tinggi</td>
+      <td>Benar</td>
+      <td>Tidak</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python">def findEntropy(column):
+    rawGroups = df.groupby(column)
+    targetGroups = [[key, len(data), len(data)/df[column].size] for key,data in rawGroups]
+    targetGroups = DataFrame(targetGroups, columns=['Data', 'N', 'Peluang'])
+    return sum([-x*log(x,2) for x in targetGroups['Peluang']]), targetGroups, rawGroups
+
+entropyTarget, groupTargets, _ = findEntropy('Main')
+print('entropy target =', entropyTarget)
+groupTargets
+</code></pre>
+
+<pre><code>entropy target = 0.863120568566631
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Data</th>
+      <th>N</th>
+      <th>Peluang</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Tidak</td>
+      <td>4</td>
+      <td>0.285714</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Ya</td>
+      <td>10</td>
+      <td>0.714286</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python">def findGain(column):
+    entropyOutlook, groupOutlooks, rawOutlooks = findEntropy(column)
+    print(groupOutlooks)
+    gain = entropyTarget-sum(len(data)/len(df)*sum(-x/len(data)*log(x/len(data),2) 
+                for x in data.groupby('Main').size()) for key,data in rawOutlooks)
+    print(&quot;gain&quot;,column,&quot;=&quot;,gain)
+    print()
+    return gain
+
+gains = [[x,findGain(x)] for x in ['Cuaca','Suhu','Kelembapan','Berangin']]
+DataFrame(gains)
+</code></pre>
+
+<pre><code>      Data  N   Peluang
+0  Berawan  4  0.285714
+1    Cerah  5  0.357143
+2    Hujan  5  0.357143
+gain Cuaca = 0.2585210366587628
+
+     Data  N   Peluang
+0  Dingin  4  0.285714
+1   Panas  4  0.285714
+2   Sejuk  6  0.428571
+gain Suhu = 0.18385092540042125
+
+     Data  N  Peluang
+0  Normal  7      0.5
+1  Tinggi  7      0.5
+gain Kelembapan = 0.3705065005495052
+
+    Data  N   Peluang
+0  Benar  6  0.428571
+1  Salah  8  0.571429
+gain Berangin = 0.0059777114237739015
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Cuaca</td>
+      <td>0.258521</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Suhu</td>
+      <td>0.183851</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Kelembapan</td>
+      <td>0.370507</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Berangin</td>
+      <td>0.005978</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
         </div>
 
         <footer class="col-md-12">
