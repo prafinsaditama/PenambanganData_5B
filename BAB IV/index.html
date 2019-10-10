@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Tugas I - Resume Penambangan Data Prafinda</title>
+        <title>Tugas IV - Resume Penambangan Data Prafinda</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -49,8 +49,8 @@
                             <li >
                                 <a href="..">Welcome to MkDocs</a>
                             </li>
-                            <li class="active">
-                                <a href="./">Tugas I</a>
+                            <li >
+                                <a href="../BAB I/">Tugas I</a>
                             </li>
                             <li >
                                 <a href="../BAB II/">Tugas II</a>
@@ -58,8 +58,8 @@
                             <li >
                                 <a href="../BAB III/">Tugas III</a>
                             </li>
-                            <li >
-                                <a href="../BAB IV/">Tugas IV</a>
+                            <li class="active">
+                                <a href="./">Tugas IV</a>
                             </li>
                         </ul>
 
@@ -70,12 +70,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="..">
+                                <a rel="next" href="../BAB III/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../BAB II/">
+                            <li class="disabled">
+                                <a rel="prev" >
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -87,26 +87,87 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#tugas-i">Tugas I</a></li>
-            <li><a href="#mean">Mean</a></li>
-            <li><a href="#median">Median</a></li>
-            <li><a href="#mode">Mode</a></li>
-            <li><a href="#range">Range</a></li>
-            <li><a href="#kuartil">Kuartil</a></li>
-            <li><a href="#variant">Variant</a></li>
-            <li><a href="#standar-deviasi">Standar Deviasi</a></li>
+        <li class="main active"><a href="#tugas-iv">Tugas IV</a></li>
+            <li><a href="#naive-bayes">Naive Bayes</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="tugas-i">Tugas I</h1>
-<h2 id="mean">Mean</h2>
-<h2 id="median">Median</h2>
-<h2 id="mode">Mode</h2>
-<h2 id="range">Range</h2>
-<h2 id="kuartil">Kuartil</h2>
-<h2 id="variant">Variant</h2>
-<h2 id="standar-deviasi">Standar Deviasi</h2></div>
+<h1 id="tugas-iv">Tugas IV</h1>
+<h2 id="naive-bayes">Naive Bayes</h2>
+<p>Algoritma Naive Bayes merupakan sebuah metoda klasifikasi menggunakan metode probabilitas dan statistik yg dikemukakan oleh ilmuwan Inggris Thomas Bayes. Algoritma Naive Bayes memprediksi peluang di masa depan berdasarkan pengalaman di masa sebelumnya sehingga dikenal sebagai Teorema Bayes. Ciri utama dr Naïve Bayes Classifier ini adalah asumsi yg sangat kuat (naïf) akan independensi dari masing-masing kondisi / kejadian.</p>
+<p>Naive Bayes Classifier bekerja sangat baik dibanding dengan model classifier lainnya. Hal ini dibuktikan pada jurnal Xhemali, Daniela, Chris J. Hinde, and Roger G. Stone. “Naive Bayes vs. decision trees vs. neural networks in the classification of training web pages.” (2009), mengatakan bahwa “Naïve Bayes Classifier memiliki tingkat akurasi yg lebih baik dibanding model classifier lainnya”.</p>
+<p>Keuntungan penggunan adalah bahwa metoda ini hanya membutuhkan jumlah data pelatihan (training data) yang kecil untuk menentukan estimasi parameter yg diperlukan dalam proses pengklasifikasian. Karena yg diasumsikan sebagai variabel independent, maka hanya varians dari suatu variabel dalam sebuah kelas yang dibutuhkan untuk menentukan klasifikasi, bukan keseluruhan dari matriks kovarians.</p>
+<p>Tahapan dari proses algoritma Naive Bayes adalah:</p>
+<ol>
+<li>Menghitung jumlah kelas / label.</li>
+<li>Menghitung Jumlah Kasus Per Kelas</li>
+<li>Kalikan Semua Variable Kelas</li>
+<li>Bandingkan Hasil Per Kelas</li>
+</ol>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/naive-bayes-table.jpg" /></p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/naive-bayes-formula-1-1.jpg" /></p>
+<p>Keterangan :
++ x : Data dengan class yang belum diketahui
++ c : Hipotesis data merupakan suatu class spesifik
++ P(c|x) : Probabilitas hipotesis berdasar kondisi (posteriori probability)
++ P(c) : Probabilitas hipotesis (prior probability)
++ P(x|c) : Probabilitas berdasarkan kondisi pada hipotesis
++ P(x) : Probabilitas c</p>
+<hr />
+<p>Rumus diatas menjelaskan bahwa peluang masuknya sampel karakteristik tertentu dalam kelas C (Posterior) adalah peluang munculnya kelas C (sebelum masuknya sampel tersebut, seringkali disebut prior), dikali dengan peluang kemunculan karakteristik karakteristik sampel pada kelas C (disebut juga likelihood), dibagi dengan peluang kemunculan karakteristik  sampel secara global ( disebut juga evidence). Karena itu, rumus diatas dapat pula ditulis sebagai berikut :</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/naive-bayes-formula-3.jpg" /></p>
+<p>Nilai Evidence selalu tetap untuk setiap kelas pada satu sampel. Nilai dari posterior tersebut nantinya akan dibandingkan dengan nilai nilai posterior kelas lainnya untuk menentukan ke kelas apa suatu sampel akan diklasifikasikan. Penjabaran lebih lanjut rumus Bayes tersebut dilakukan dengan menjabarkan (c|x1,…,xn) menggunakan aturan perkalian sebagai berikut :</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/naive-bayes-formula-4.jpg" /></p>
+<p>Dapat dilihat bahwa hasil penjabaran tersebut menyebabkan semakin banyak dan semakin kompleksnya faktor faktor syarat yang mempengaruhi nilai probabilitas, yang hampir mustahil untuk dianalisa satu persatu. Akibatnya, perhitungan tersebut menjadi sulit untuk dilakukan. Disinilah digunakan asumsi independensi yang sangat tinggi (naif), bahwa masing masing petunjuk saling bebas (independen) satu sama lain. Dengan asumsi tersebut, maka berlaku suatu kesamaan sebagai berikut:</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/naive-bayes-formula-5.jpg" /> </p>
+<p>Persamaan diatas merupakan model dari Teorema Naive Bayes yang selanjutnya akan digunakan dalam proses klasifikasi. Untuk klasifikasi dengan data kontinyu digunakan rumus Densitas Gauss :</p>
+<p><img alt="" src="https://informatikalogi.com/wp-content/uploads/2017/04/distribusi-normal-gauss.jpg" /></p>
+<p>Keterangan :
++ P : Peluang
++ Xi : Atribut ke i
++ xi : Nilai atribut ke i
++ Y : Kelas yang dicari
++ yj : Sub kelas Y yang dicari
++ u : Mean, menyatakan rata rata dari seluruh atribut
++ o : Deviasi standar, menyatakan varian dari seluruh atribut</p>
+<pre><code class="python">#Contoh eksekusi
+
+from sklearn import datasets, model_selection
+from pandas import *
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+iris = datasets.load_iris()
+data = [list(s)+[iris.target_names[iris.target[i]]] for i,s in enumerate(iris.data)]
+dataset = DataFrame(data, columns=iris.feature_names+['class'])
+
+array = dataset.values
+X = array[:,0:4]
+Y = array[:,4]
+
+X_train, X_validation, Y_train, Y_validation = \
+        model_selection.train_test_split(X, Y, \
+        train_size=0.2, random_state=2)
+classifier = GaussianNB()
+classifier.fit(X_train, Y_train)
+p = classifier.predict(X_validation)
+
+print(&quot;Akurasi: &quot;, accuracy_score(Y_validation, p))
+print(classification_report(Y_validation, p))
+</code></pre>
+
+<pre><code>Akurasi:  0.8833333333333333
+              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        39
+  versicolor       0.75      0.97      0.84        39
+   virginica       0.97      0.69      0.81        42
+
+    accuracy                           0.88       120
+   macro avg       0.90      0.89      0.88       120
+weighted avg       0.91      0.88      0.88       120
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
